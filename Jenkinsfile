@@ -81,13 +81,13 @@ pipeline {
 
     post {
         success {
-            withCredentials([string(credentialsId: 'TG_TOKEN', variable: 'TOKEN'),
+            withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'TOKEN'),
                              string(credentialsId: 'TG_CHAT',  variable: 'CHAT_ID')]) {
                 sendTelegram("✅ *${env.JOB_NAME}* build #${env.BUILD_NUMBER} SUCCESS\nImage: ${env.FULL_IMG}", TOKEN, CHAT_ID)
             }
         }
         failure {
-            withCredentials([string(credentialsId: 'TG_TOKEN', variable: 'TOKEN'),
+            withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'TOKEN'),
                              string(credentialsId: 'TG_CHAT',  variable: 'CHAT_ID')]) {
                 sendTelegram("❌ *${env.JOB_NAME}* build #${env.BUILD_NUMBER} FAILED\nQuality Gate: ${env.QG_STATUS ?: 'UNKNOWN'}", TOKEN, CHAT_ID)
             }
