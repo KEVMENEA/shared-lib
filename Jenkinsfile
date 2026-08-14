@@ -1,9 +1,3 @@
-// Jenkinsfile  (this goes in your APP repo, NOT in the library)
-//
-// The trailing underscore after @Library is required when the annotation is
-// not directly attached to an import. 'shard-lib' must match the library name
-// you configure in Manage Jenkins > System > Global Trusted Pipeline Libraries.
-
 @Library('shard-lib') _
 
 pipeline {
@@ -14,15 +8,17 @@ pipeline {
         IMG_NAME  = "jenkins-g12-reactjs"
         DH_USER   = "meneakev"
         FULL_IMG  = "${DH_USER}/${IMG_NAME}:${TAG}"
+        CHAT_ID = "5302400828"
+        TOKEN = "8815527979:AAEeMJZZpiSd53nZ08Wwh199D_4ej3V3IBI"
         CONTAINER = "reactjs-app"
-        PORTS     = "8081:80"           // hostPort:containerPort
+        PORTS     = "8081:80"          
     }
 
     stages {
 
         stage("Checkout") {
             steps {
-                git branch: 'main', url: 'https://github.com/keoKAY/reactjs-devop8-template'
+                git branch: 'master', url: 'https://github.com/keoKAY/reactjs-devop8-template'
             }
         }
 
