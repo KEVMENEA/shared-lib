@@ -1,22 +1,12 @@
-def call(String projectName, String projectKey, String projectVersion) {
-    stage("Scan with Sonarqube" ) {
-        environment{
-            scannerHome = tool 'sonar-scanner'
-        }
+def call(String projectKey, String projectName, String projectVersion) {
 
-        steps{
-            withSonarQubeEnv(credentialId: 'SONAR-TOKEN', installationName: 'sonar-scanner') {
-                script{
-                    sh """
-                        ${scannerHome}/bin/sonar-scanner \
-                        -Dsonar.projectKey=${projectKey} \
-                        -Dsonar.projectName=${projectName} \
-                        -Dsonar.projectVersion=${projectVersion} \
+    withSonarQubeEnv('SonarQube') {
 
-                    """
-                }
-            }
-        }
+        sh """
+            sonar-scanner \
+              -Dsonar.projectKey=${projectKey} \
+              -Dsonar.projectName=${projectName} \
+              -Dsonar.projectVersion=${projectVersion}
+        """
     }
-
 }
