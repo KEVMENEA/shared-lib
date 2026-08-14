@@ -8,8 +8,8 @@ pipeline {
         IMG_NAME  = "jenkins-g12-reactjs"
         DH_USER   = "meneakev"
         FULL_IMG  = "${DH_USER}/${IMG_NAME}:${TAG}"
-        CHAT_ID = "5302400828"
-        TOKEN = "8815527979:AAEeMJZZpiSd53nZ08Wwh199D_4ej3V3IBI"
+        CHAT_ID = "MY_CHAT_ID"
+        TOKEN = "MY_TOKEN"
         CONTAINER = "reactjs-app"
         PORTS     = "8081:80"          
     }
